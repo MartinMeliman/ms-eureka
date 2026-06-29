@@ -1,0 +1,15 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: ms-eureka
+
+eureka:
+  client:
+    # El servidor NO se registra a sí mismo
+    register-with-eureka: false
+    # El servidor NO necesita buscar otros servicios
+    fetch-registry: false
+  instance:
+    hostname: localhost
