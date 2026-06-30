@@ -1,15 +1,13 @@
 server:
   port: ${PORT:8761}
-  
-spring:
-  application:
-    name: ms-eureka
 
 eureka:
-  client:
-    # El servidor NO se registra a sí mismo
-    register-with-eureka: false
-    # El servidor NO necesita buscar otros servicios
-    fetch-registry: false
   instance:
-    hostname: localhost
+    non-secure-port: ${PORT:8761}
+    non-secure-port-enabled: true
+    hostname: ${RENDER_EXTERNAL_HOSTNAME:localhost}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${PORT:8761}/eureka/
